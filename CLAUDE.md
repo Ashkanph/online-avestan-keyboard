@@ -1,0 +1,48 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project
+
+A client-only React 19 + TypeScript + Vite app: an on-screen keyboard for typing Avestan, Persian and English, with a physical-keyboard mode and a phone-style layout on small screens. There is no backend and no runtime dependency beyond React.
+
+## Commands
+
+```sh
+npm run dev           # Vite dev server
+npm run build         # Type-check (tsc -b), then production build
+npm run lint          # ESLint (lint:fix to autofix)
+npm run format:check  # Prettier (format to write)
+npx tsc -b            # Type-check only
+```
+
+There is no test framework or test suite. Verify changes with `npm run build`, `npm run lint`, and by running the app.
+
+A Husky pre-commit hook runs `lint-staged` (ESLint and Prettier on staged files).
+
+## Architecture
+
+`App.tsx` owns the language, the text and a ref to the single `<textarea>`. All input paths converge on its `handleInsert` / `handleBackspace`:
+
+- **On-screen keys**: `Keyboard` picks `DesktopKeyboard` or `CompactKeyboard` from a media query in `App.tsx`. Both are built on `Key`, which handles pointer input, long-press alternates and key repeat.
+- **Physical keys**: `usePhysicalKeyboard` listens on `window`, translates keys through the active layout and reports pressed codes so the on-screen keys can highlight.
+- **Native textarea edits** (cut, paste, keys with no layout mapping) reach state through the textarea's `onChange` instead.
+
+`src/lib/editor.ts` mutates the textarea directly, then `App` copies `textarea.value` into state.
+
+`src/data/layouts.ts` is the source of truth for keyboard behavior. Each `Layout` maps `KeyboardEvent.code` to `[normal, shifted]` characters, and also defines the phone rows and symbol pages. Components stay language-agnostic and read everything through this data and its helpers (`charsFor`, `keyLabel`, `describeChar`).
+
+### Invariants that are easy to break
+
+- **Avestan is outside the BMP** (U+10B00 block), so each letter is a surrogate pair. Don't index or split strings by code unit: use `Array.from` or code-point-aware logic, as `deleteBeforeCaret` does.
+- **Keys are matched by `event.code`** (physical position), never `event.key`, so typing doesn't depend on the OS keyboard layout.
+- **`editor.ts` assigns `el.value` rather than calling `setRangeText`** to keep React's value tracking in sync.
+- **Focus must stay in the textarea** while keys are used. `Keyboard` calls `preventDefault` on `mousedown` for this, and the copy button does the same.
+- **`inputMode="none"`** on the textarea keeps the phone's own keyboard closed while the caret stays usable.
+- **The keyboards are keyed by `layout.id`** so Shift and the symbols page reset when the language changes.
+
+### Extending
+
+- **New language**: extend `LanguageId`, then add it to `LAYOUTS` and `LANGUAGE_ORDER`.
+- **New Avestan font**: add the `.woff2` and its licence to `src/assets/fonts`, declare it with `@font-face` in `src/index.css`, and add it to `AVESTAN_FONTS` in `src/data/fonts.ts`. Fonts are self-hosted, so don't link a CDN. The selected font is applied through the `--avestan-font` CSS variable set in `App.tsx`.
+- **Persisted preferences** go through `src/lib/storage.ts`, which tolerates blocked `localStorage`.

@@ -6,6 +6,14 @@ A web-based Avestan keyboard application.
 - Support physical keyboards
 - Selectable Avestan font, with all fonts served from this project
 
+### Characters
+
+The characters are based on the Unicode Standard, Version 18.0:
+
+- Avestan
+  - Range: 10B00–10B3F
+  - Link for more info: https://www.unicode.org/Public/18.0.0/charts/PDF/U10B00.pdf
+
 ## Development
 
 ```sh
