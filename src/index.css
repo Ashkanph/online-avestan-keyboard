@@ -1,3 +1,80 @@
-#root {
+@font-face {
+  font-family: 'Noto Sans Avestan';
+  src: url('./assets/fonts/NotoSansAvestan-Regular.woff2') format('woff2');
+  font-display: block;
+  unicode-range: U+10B00-10B3F, U+2E30-2E31;
+}
+
+@font-face {
+  font-family: 'Unifont Avestan';
+  src: url('./assets/fonts/UnifontUpper-Avestan.woff2') format('woff2');
+  font-display: block;
+  unicode-range: U+10B00-10B3F;
+}
+
+:root {
+  --ui-font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Tahoma, sans-serif;
+
+  color-scheme: light;
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --surface-hover: #e9edf4;
+  --border: #dde3ec;
+  --text: #1f1f1f;
+  --text-muted: #5f6368;
+  --accent: #0b57d0;
+  --accent-soft: #d3e3fd;
+  --on-accent: #ffffff;
+
+  --kb-bg: #e8edf4;
+  --key-bg: #ffffff;
+  --key-fn-bg: #d3dbe6;
+  --key-down-bg: #c2cede;
+  --key-preview-bg: #ffffff;
+  --key-text: #1f1f1f;
+  --key-hint: #6b7280;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #131416;
+  --surface: #1e1f22;
+  --surface-hover: #2b2d31;
+  --border: #33363b;
+  --text: #e8eaed;
+  --text-muted: #a0a4ab;
+  --accent: #a8c7fa;
+  --accent-soft: #004a77;
+  --on-accent: #062e6f;
+
+  --kb-bg: #1e1f22;
+  --key-bg: #3c3e43;
+  --key-fn-bg: #2d3036;
+  --key-down-bg: #55585f;
+  --key-preview-bg: #4a4d53;
+  --key-text: #e8eaed;
+  --key-hint: #a0a4ab;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ui-font);
+}
+
+.icon {
+  display: block;
+  flex: none;
 }

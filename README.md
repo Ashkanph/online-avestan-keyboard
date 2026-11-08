@@ -1,6 +1,20 @@
 A web-based Avestan keyboard application.
 
 - Support multiple languages (Avestan, persian and english)
-- Responsive design
+- Responsive design, with a phone-style keyboard on small screens
 - With light and dark themes
 - Support physical keyboards
+- Selectable Avestan font, with all fonts served from this project
+
+## Development
+
+```sh
+npm install
+npm run dev
+```
+
+## Fonts
+
+The files in `src/assets/fonts` are licensed under the SIL Open Font License 1.1. The licence texts
+are next to the fonts. `UnifontUpper-Avestan.woff2` is GNU Unifont Upper reduced to the Avestan
+block.

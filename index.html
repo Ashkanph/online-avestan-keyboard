@@ -3,8 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Type Avestan, Persian and English online." />
+    <title>Avestan online keyboard</title>
+    <script>
+      // Runs before first paint so a saved dark theme doesn't flash light.
+      ;(function () {
+        var saved = null
+        try {
+          saved = localStorage.getItem('theme')
+        } catch (error) {}
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.dataset.theme = saved || (dark ? 'dark' : 'light')
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>
