@@ -1,4 +1,5 @@
 import type { Theme } from '../hooks/useTheme'
+import { InstallButton } from './InstallButton'
 import { GitHubIcon, MoonIcon, SunIcon } from './icons'
 
 const REPOSITORY_URL = 'https://github.com/Ashkanph/online-avestan-keyboard'
@@ -15,6 +16,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
     <header className="header">
       <h1 className="header__title">Avestan online keyboard</h1>
       <div className="header__actions">
+        <InstallButton />
         <a
           className="icon-button"
           href={REPOSITORY_URL}

@@ -5,6 +5,7 @@ A web-based Avestan keyboard application.
 - With light and dark themes
 - Support physical keyboards
 - Selectable Avestan font, with all fonts served from this project
+- Can be added to a phone's home screen as an app, and works without an internet connection
 
 ### Characters
 

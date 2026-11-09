@@ -32,6 +32,8 @@ A Husky pre-commit hook runs `lint-staged` (ESLint and Prettier on staged files)
 
 `src/data/layouts.ts` is the source of truth for keyboard behavior. Each `Layout` maps `KeyboardEvent.code` to `[normal, shifted]` characters, and also defines the phone rows and symbol pages. Components stay language-agnostic and read everything through this data and its helpers (`charsFor`, `keyLabel`, `describeChar`).
 
+The app is an installable PWA, configured through `VitePWA` in `vite.config.ts`. The service worker precaches the whole build (production only; it is not active under `npm run dev`). `useInstallPrompt` and `InstallButton` provide the "add to home screen" button. The icons in `public/icons` are generated PNGs.
+
 ### Invariants that are easy to break
 
 - **Avestan is outside the BMP** (U+10B00 block), so each letter is a surrogate pair. Don't index or split strings by code unit: use `Array.from` or code-point-aware logic, as `deleteBeforeCaret` does.
@@ -40,6 +42,8 @@ A Husky pre-commit hook runs `lint-staged` (ESLint and Prettier on staged files)
 - **Focus must stay in the textarea** while keys are used. `Keyboard` calls `preventDefault` on `mousedown` for this, and the copy button does the same.
 - **`inputMode="none"`** on the textarea keeps the phone's own keyboard closed while the caret stays usable.
 - **The keyboards are keyed by `layout.id`** so Shift and the symbols page reset when the language changes.
+- **New asset types must be added to `globPatterns`** in `vite.config.ts`, or they won't be available offline.
+- **Don't reload the page when a service worker update arrives**: the typed text exists only in memory.
 
 ### Extending
 

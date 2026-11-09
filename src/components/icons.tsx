@@ -47,6 +47,15 @@ export function MoonIcon() {
   )
 }
 
+export function InstallIcon() {
+  return (
+    <Icon>
+      <path d="M12 3v12M7 10l5 5 5-5" />
+      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+    </Icon>
+  )
+}
+
 export function CopyIcon() {
   return (
     <Icon>

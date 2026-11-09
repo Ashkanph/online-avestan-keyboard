@@ -5,6 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Type Avestan, Persian and English online." />
+    <meta name="theme-color" content="#f6f8fc" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Avestan" />
     <title>Avestan online keyboard</title>
     <script>
       // Runs before first paint so a saved dark theme doesn't flash light.
@@ -14,7 +19,11 @@
           saved = localStorage.getItem('theme')
         } catch (error) {}
         var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        document.documentElement.dataset.theme = saved || (dark ? 'dark' : 'light')
+        var theme = saved || (dark ? 'dark' : 'light')
+        document.documentElement.dataset.theme = theme
+        document
+          .querySelector('meta[name="theme-color"]')
+          .setAttribute('content', theme === 'dark' ? '#131416' : '#f6f8fc')
       })()
     </script>
   </head>

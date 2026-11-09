@@ -55,6 +55,41 @@
   background: var(--surface-hover);
 }
 
+.install-dialog {
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.install-dialog::backdrop {
+  background: rgb(0 0 0 / 40%);
+}
+
+.install-dialog__title {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.install-dialog p {
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.install-dialog__close {
+  display: block;
+  margin-inline-start: auto;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  cursor: pointer;
+}
+
 .text-panel {
   display: flex;
   flex: 1;
