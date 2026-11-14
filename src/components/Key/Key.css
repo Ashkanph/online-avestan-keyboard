@@ -1,10 +1,11 @@
 /* Keys are full-height hit areas: the gap is padding inside the button, so no tap lands between
-   two keys. */
+   two keys. Keys get shorter on short screens so the text area keeps some room. */
 .key {
   position: relative;
   flex: 1 1 0;
   min-width: 0;
   height: 54px;
+  height: clamp(36px, 7dvh, 54px);
   padding: 3px;
   border: 0;
   background: none;

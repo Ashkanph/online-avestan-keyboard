@@ -14,9 +14,10 @@ npm run build         # Type-check (tsc -b), then production build
 npm run lint          # ESLint (lint:fix to autofix)
 npm run format:check  # Prettier (format to write)
 npx tsc -b            # Type-check only
+npm run check:layout  # Check the app fits the screen without page scrolling at many screen sizes
 ```
 
-There is no test framework or test suite. Verify changes with `npm run build`, `npm run lint`, and by running the app.
+There is no test framework or unit test suite. Verify changes with `npm run build`, `npm run lint`, and by running the app. After changing layout or CSS, also run `npm run check:layout` (`scripts/check-layout.ts`). It starts a Vite dev server and measures the app in headless Chromium through Playwright, so the first run needs `npx playwright install chromium`.
 
 A Husky pre-commit hook runs `lint-staged` (ESLint and Prettier on staged files).
 
@@ -46,6 +47,7 @@ The app is an installable PWA, configured through `VitePWA` in `vite.config.ts`.
 - **The keyboards are keyed by `layout.id`** so Shift and the symbols page reset when the language changes.
 - **New asset types must be added to `globPatterns`** in `vite.config.ts`, or they won't be available offline.
 - **Don't reload the page when a service worker update arrives**: the typed text exists only in memory.
+- **The page never scrolls**: `.app` is exactly one screen tall with `overflow: hidden`. The header and keyboard are `flex: none`, and the text area shrinks to fit the space left over and scrolls by itself.
 
 ### Extending
 

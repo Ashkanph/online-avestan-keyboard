@@ -1,6 +1,5 @@
 /* Phone layout, styled after the Android system keyboard. */
 .keyboard[data-compact] {
-  flex: none;
   border-radius: 0;
   padding: 8px 2px calc(6px + env(safe-area-inset-bottom));
 }

@@ -1,4 +1,6 @@
+/* The keyboard keeps its height; the text area above it gives up space instead. */
 .keyboard {
+  flex: none;
   background: var(--kb-bg);
   border-radius: 14px;
   padding: 8px;

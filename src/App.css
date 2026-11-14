@@ -1,7 +1,11 @@
+/* The app is exactly one screen tall on every screen size, so the page never scrolls. The text
+   area takes the space left over and scrolls by itself when its text doesn't fit. */
 .app {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 .app__main {
@@ -10,20 +14,14 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  min-height: 0;
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 16px 24px;
 }
 
-/* On phones the app fills the screen and the keyboard docks to the bottom edge. */
-.app[data-compact] {
-  height: 100dvh;
-  min-height: 0;
-  overflow: hidden;
-}
-
+/* On phones the keyboard docks to the bottom edge of the screen. */
 .app[data-compact] .app__main {
-  min-height: 0;
   gap: 0;
   max-width: none;
   padding: 0;

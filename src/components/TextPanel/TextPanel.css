@@ -12,7 +12,7 @@
 .text-panel__input {
   flex: 1;
   width: 100%;
-  min-height: 180px;
+  min-height: 0;
   padding: 16px;
   border: 0;
   outline: none;
@@ -91,7 +91,6 @@
 }
 
 .app[data-compact] .text-panel__input {
-  min-height: 0;
   padding: 12px 14px;
   font-size: 24px;
 }
