@@ -47,12 +47,16 @@ export default defineConfig({
       workbox: {
         // Fonts load on demand, so they must be precached for offline use.
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // The link-preview image is only fetched by social networks, never by the app.
+        globIgnores: ['og-image.png'],
         cleanupOutdatedCaches: true,
       },
       manifest: {
         name: 'Avestan online keyboard',
         short_name: 'Avestan',
-        description: 'Type Avestan, Persian and English online.',
+        description:
+          'Free online keyboard for typing the Avestan script, as well as Persian and English. Works offline.',
+        categories: ['utilities', 'education'],
         lang: 'en',
         display: 'standalone',
         theme_color: '#f6f8fc',

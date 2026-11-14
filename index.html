@@ -2,15 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Type Avestan, Persian and English online." />
-    <meta name="theme-color" content="#f6f8fc" />
+    <!-- Titles and descriptions are English followed by Persian, so the page also matches Persian
+         searches. They are kept short so the Persian part isn't cut off in search results. -->
+    <title>Online Avestan Keyboard – صفحه‌کلید آنلاین اوستایی</title>
+    <meta
+      name="description"
+      content="Free online keyboard for Avestan and Persian. Works offline. صفحه‌کلید آنلاین و رایگان برای نوشتن به دبیره‌ی اوستایی و فارسی."
+    />
+    <!-- The absolute URLs below must match where the site is published. -->
+    <link rel="canonical" href="https://ashkanph.github.io/online-avestan-keyboard/" />
+
+    <!-- Link previews in social networks and messaging apps. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Avestan online keyboard" />
+    <meta
+      property="og:title"
+      content="Online Avestan Keyboard – صفحه‌کلید و کیبورد آنلاین اوستایی"
+    />
+    <meta
+      property="og:description"
+      content="Type Avestan and Persian in your browser. Free, works offline, no tracking. نوشتن به دبیره‌ی اوستایی و فارسی؛ رایگان، بدون اینترنت و بدون ردیابی."
+    />
+    <meta property="og:url" content="https://ashkanph.github.io/online-avestan-keyboard/" />
+    <meta
+      property="og:image"
+      content="https://ashkanph.github.io/online-avestan-keyboard/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The Avestan online keyboard, with Avestan text typed above the on-screen keyboard"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured data for search engines. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Avestan online keyboard",
+        "alternateName": "صفحه‌کلید و کیبورد اوستایی",
+        "url": "https://ashkanph.github.io/online-avestan-keyboard/",
+        "description": "Free online keyboard for typing the Avestan script in Unicode, as well as Persian and English. Works offline.",
+        "image": "https://ashkanph.github.io/online-avestan-keyboard/og-image.png",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png" />
+    <meta name="theme-color" content="#f6f8fc" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Avestan" />
-    <title>Avestan online keyboard</title>
     <script>
       // Runs before first paint so a saved dark theme doesn't flash light.
       ;(function () {
@@ -28,6 +80,23 @@
     </script>
   </head>
   <body>
+    <!-- The app is drawn by JavaScript. This text is for visitors and search engines that don't
+         run it. -->
+    <noscript>
+      <h1>Online Avestan keyboard</h1>
+      <p>
+        A free on-screen keyboard for typing the Avestan script (Unicode block U+10B00–U+10B3F), as
+        well as Persian and English. Type with the on-screen keys or your own keyboard, choose
+        between three Avestan fonts, then copy the text into any other app. On phones it shows a
+        phone-style keyboard, and it can be added to the home screen to work without an internet
+        connection.
+      </p>
+      <p lang="fa" dir="rtl">
+        صفحه‌کلید و کیبورد آنلاین برای نوشتن به دبیره و خط اوستایی و فارسی. رایگان و بدون نیاز به
+        اینترنت پس از نصب.
+      </p>
+      <p><strong>Please turn on JavaScript to use the keyboard.</strong></p>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
