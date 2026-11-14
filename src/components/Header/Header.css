@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 14px 16px;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.header__logo {
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header__actions {
+  display: flex;
+  gap: 4px;
+}
+
+/* On phones the header is shorter so the text and keyboard get more room. */
+.app[data-compact] .header {
+  flex: none;
+  padding: 4px 4px 4px 14px;
+}
+
+.app[data-compact] .header__title {
+  font-size: 17px;
+}
+
+.app[data-compact] .header__logo {
+  width: 26px;
+  height: 26px;
+}

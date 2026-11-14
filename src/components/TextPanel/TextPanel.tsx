@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState, type RefObject } from 'react'
-import { AVESTAN_FONTS } from '../data/fonts'
-import type { Layout } from '../data/layouts'
-import { copyTextareaContent } from '../lib/clipboard'
-import { CheckIcon, CopyIcon } from './icons'
+import { AVESTAN_FONTS } from '../../data/fonts'
+import type { Layout } from '../../data/layouts'
+import { copyTextareaContent } from '../../lib/clipboard'
+import { CheckIcon, CopyIcon } from '../icons/icons'
+import './TextPanel.css'
 
 const COPY_STATUS_MS = 1800
 

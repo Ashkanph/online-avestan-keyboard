@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import './icons.css'
 
 function Icon({ children, filled = false }: { children: ReactNode; filled?: boolean }) {
   return (

@@ -28,6 +28,8 @@ A Husky pre-commit hook runs `lint-staged` (ESLint and Prettier on staged files)
 - **Physical keys**: `usePhysicalKeyboard` listens on `window`, translates keys through the active layout and reports pressed codes so the on-screen keys can highlight.
 - **Native textarea edits** (cut, paste, keys with no layout mapping) reach state through the textarea's `onChange` instead.
 
+Each component lives in its own folder, `src/components/<Name>/`, as `<Name>.tsx` plus `<Name>.css` holding that component's styles (including its `.app[data-compact]` phone overrides). The component imports its CSS after its other imports, so a child's styles load before the parent's overrides. `index.css` holds only global styles: fonts, theme variables and the shared `.icon-button`.
+
 `src/lib/editor.ts` mutates the textarea directly, then `App` copies `textarea.value` into state.
 
 `src/data/layouts.ts` is the source of truth for keyboard behavior. Each `Layout` maps `KeyboardEvent.code` to `[normal, shifted]` characters, and also defines the phone rows and symbol pages. Components stay language-agnostic and read everything through this data and its helpers (`charsFor`, `keyLabel`, `describeChar`).

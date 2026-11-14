@@ -1,23 +1,3 @@
-.keyboard {
-  background: var(--kb-bg);
-  border-radius: 14px;
-  padding: 8px;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.keyboard[data-language='ae'] {
-  font-family: var(--avestan-font), 'Noto Sans Avestan', var(--ui-font);
-}
-
-.kb-row {
-  display: flex;
-  justify-content: center;
-}
-
 /* Keys are full-height hit areas: the gap is padding inside the button, so no tap lands between
    two keys. */
 .key {
@@ -88,57 +68,6 @@
   font-size: 11px;
 }
 
-.key__language {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--ui-font);
-}
-
-/* Phone layout, styled after the Android system keyboard. */
-.keyboard[data-compact] {
-  flex: none;
-  border-radius: 0;
-  padding: 8px 2px calc(6px + env(safe-area-inset-bottom));
-}
-
-.keyboard[data-compact] .key {
-  height: clamp(38px, 7.2dvh, 58px);
-  padding: 4px 2px;
-}
-
-.keyboard[data-compact] .key__face {
-  border-radius: 9px;
-  font-size: 21px;
-}
-
-.keyboard[data-compact] .key[data-kind='function'] .key__face {
-  font-size: 14px;
-}
-
-.keyboard[data-compact] .kb-rows .kb-row > .key[data-kind='char'] {
-  flex: 0 0 calc(100% / var(--columns));
-}
-
-.keyboard[data-compact] .key__hint {
-  top: 3px;
-  right: 3px;
-  font-size: 10px;
-}
-
-/* The space bar and Enter are pills, unlike the rounded-square letter keys. */
-.keyboard[data-compact] .key[data-kind='space'] .key__face {
-  border-radius: 999px;
-  color: var(--key-hint);
-  font-family: var(--ui-font);
-  font-size: 13px;
-}
-
-.keyboard[data-compact] .key[data-kind='accent'] .key__face,
-.keyboard[data-compact] .kb-row--bottom .key[data-kind='function'] .key__face {
-  border-radius: 999px;
-}
-
 .key__preview {
   position: absolute;
   z-index: 5;
@@ -161,14 +90,6 @@
 .key__preview[data-alternate] {
   background: var(--accent);
   color: var(--on-accent);
-}
-
-.kb-row > .key:first-child .key__preview {
-  left: 2px;
-}
-
-.kb-row > .key:last-child .key__preview {
-  right: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

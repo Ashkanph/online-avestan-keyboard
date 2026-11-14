@@ -1,6 +1,7 @@
-import type { Theme } from '../hooks/useTheme'
-import { InstallButton } from './InstallButton'
-import { GitHubIcon, MoonIcon, SunIcon } from './icons'
+import type { Theme } from '../../hooks/useTheme'
+import { InstallButton } from '../InstallButton/InstallButton'
+import { GitHubIcon, MoonIcon, SunIcon } from '../icons/icons'
+import './Header.css'
 
 const REPOSITORY_URL = 'https://github.com/Ashkanph/online-avestan-keyboard'
 /** The logo is the favicon in `public`, so there is a single copy of it. */

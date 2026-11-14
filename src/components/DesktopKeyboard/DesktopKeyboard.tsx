@@ -6,10 +6,11 @@ import {
   isEnglishLetter,
   keyLabel,
   type Layout,
-} from '../data/layouts'
-import { useVirtualShift } from '../hooks/useVirtualShift'
-import { BackspaceIcon, EnterIcon, GlobeIcon, ShiftIcon, TabIcon } from './icons'
-import { Key } from './Key'
+} from '../../data/layouts'
+import { useVirtualShift } from '../../hooks/useVirtualShift'
+import { BackspaceIcon, EnterIcon, GlobeIcon, ShiftIcon, TabIcon } from '../icons/icons'
+import { Key } from '../Key/Key'
+import './DesktopKeyboard.css'
 
 const FUNCTION_KEY_GROW: Record<string, number> = {
   Backspace: 2,

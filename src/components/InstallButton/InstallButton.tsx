@@ -1,6 +1,7 @@
 import { useRef } from 'react'
-import { useInstallPrompt } from '../hooks/useInstallPrompt'
-import { InstallIcon } from './icons'
+import { useInstallPrompt } from '../../hooks/useInstallPrompt'
+import { InstallIcon } from '../icons/icons'
+import './InstallButton.css'
 
 const LABEL = 'Add to home screen'
 

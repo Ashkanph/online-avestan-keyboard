@@ -1,0 +1,43 @@
+/* Phone layout, styled after the Android system keyboard. */
+.keyboard[data-compact] {
+  flex: none;
+  border-radius: 0;
+  padding: 8px 2px calc(6px + env(safe-area-inset-bottom));
+}
+
+.keyboard[data-compact] .key {
+  height: clamp(38px, 7.2dvh, 58px);
+  padding: 4px 2px;
+}
+
+.keyboard[data-compact] .key__face {
+  border-radius: 9px;
+  font-size: 21px;
+}
+
+.keyboard[data-compact] .key[data-kind='function'] .key__face {
+  font-size: 14px;
+}
+
+.keyboard[data-compact] .kb-rows .kb-row > .key[data-kind='char'] {
+  flex: 0 0 calc(100% / var(--columns));
+}
+
+.keyboard[data-compact] .key__hint {
+  top: 3px;
+  right: 3px;
+  font-size: 10px;
+}
+
+/* The space bar and Enter are pills, unlike the rounded-square letter keys. */
+.keyboard[data-compact] .key[data-kind='space'] .key__face {
+  border-radius: 999px;
+  color: var(--key-hint);
+  font-family: var(--ui-font);
+  font-size: 13px;
+}
+
+.keyboard[data-compact] .key[data-kind='accent'] .key__face,
+.keyboard[data-compact] .kb-row--bottom .key[data-kind='function'] .key__face {
+  border-radius: 999px;
+}

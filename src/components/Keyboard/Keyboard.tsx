@@ -1,6 +1,6 @@
-import type { Layout } from '../data/layouts'
-import { CompactKeyboard } from './CompactKeyboard'
-import { DesktopKeyboard } from './DesktopKeyboard'
+import type { Layout } from '../../data/layouts'
+import { CompactKeyboard } from '../CompactKeyboard/CompactKeyboard'
+import { DesktopKeyboard } from '../DesktopKeyboard/DesktopKeyboard'
 import './Keyboard.css'
 
 interface KeyboardProps {

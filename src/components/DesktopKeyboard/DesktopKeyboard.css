@@ -1,0 +1,6 @@
+.key__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ui-font);
+}

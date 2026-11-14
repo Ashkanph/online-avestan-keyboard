@@ -1,8 +1,15 @@
 import { useState, type CSSProperties } from 'react'
-import { charsFor, describeChar, englishTopRowDigit, keyLabel, type Layout } from '../data/layouts'
-import { useVirtualShift } from '../hooks/useVirtualShift'
-import { BackspaceIcon, EnterIcon, GlobeIcon, ShiftIcon } from './icons'
-import { Key, type Alternate } from './Key'
+import {
+  charsFor,
+  describeChar,
+  englishTopRowDigit,
+  keyLabel,
+  type Layout,
+} from '../../data/layouts'
+import { useVirtualShift } from '../../hooks/useVirtualShift'
+import { BackspaceIcon, EnterIcon, GlobeIcon, ShiftIcon } from '../icons/icons'
+import { Key, type Alternate } from '../Key/Key'
+import './CompactKeyboard.css'
 
 const SYMBOLS_COLUMNS = 10
 

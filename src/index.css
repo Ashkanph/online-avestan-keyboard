@@ -81,7 +81,26 @@ body {
   font-family: var(--ui-font);
 }
 
-.icon {
-  display: block;
-  flex: none;
+/* Round icon buttons, shared by the header and the install button. */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: var(--surface-hover);
+}
+
+.icon-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }

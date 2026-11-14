@@ -1,0 +1,27 @@
+.keyboard {
+  background: var(--kb-bg);
+  border-radius: 14px;
+  padding: 8px;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.keyboard[data-language='ae'] {
+  font-family: var(--avestan-font), 'Noto Sans Avestan', var(--ui-font);
+}
+
+.kb-row {
+  display: flex;
+  justify-content: center;
+}
+
+.kb-row > .key:first-child .key__preview {
+  left: 2px;
+}
+
+.kb-row > .key:last-child .key__preview {
+  right: 2px;
+}

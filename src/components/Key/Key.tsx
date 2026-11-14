@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
+import './Key.css'
 
 const LONG_PRESS_MS = 380
 const REPEAT_DELAY_MS = 400
