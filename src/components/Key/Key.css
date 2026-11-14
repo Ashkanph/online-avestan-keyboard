@@ -1,10 +1,12 @@
 /* Keys are full-height hit areas: the gap is padding inside the button, so no tap lands between
-   two keys. Keys get shorter on short screens so the text area keeps some room. */
+   two keys. Keys get shorter on short screens so the text area keeps some room. The fixed height
+   is for browsers without clamp() (Firefox before 75), the vh one for those without dvh units. */
 .key {
   position: relative;
   flex: 1 1 0;
   min-width: 0;
   height: 54px;
+  height: clamp(36px, 7vh, 54px);
   height: clamp(36px, 7dvh, 54px);
   padding: 3px;
   border: 0;
@@ -28,9 +30,15 @@
   transition: background-color 90ms;
 }
 
-.key:focus-visible .key__face {
+/* Browsers without :focus-visible (Safari before 15.4) ignore the second rule, so they outline
+   every focused key; clicked keys don't take focus, so that is still mostly keyboard focus. */
+.key:focus .key__face {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
+}
+
+.key:focus:not(:focus-visible) .key__face {
+  outline: none;
 }
 
 .key[data-kind='function'] .key__face {

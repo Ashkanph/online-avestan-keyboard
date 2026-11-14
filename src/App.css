@@ -1,10 +1,11 @@
 /* The app is exactly one screen tall on every screen size, so the page never scrolls. The text
-   area takes the space left over and scrolls by itself when its text doesn't fit. */
+   area takes the space left over and scrolls by itself when its text doesn't fit.
+   --app-height is only set in browsers without dvh units; see lib/viewportHeight.ts. */
 .app {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  height: 100dvh;
+  height: var(--app-height, 100dvh);
   overflow: hidden;
 }
 
@@ -12,7 +13,6 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 16px;
   width: 100%;
   min-height: 0;
   max-width: 1040px;
@@ -20,9 +20,18 @@
   padding: 0 16px 24px;
 }
 
+/* Margins rather than flexbox gap, which is missing before Chrome 84 and Safari 14.1. The same
+   goes for the other components. */
+.app__main > * + * {
+  margin-top: 16px;
+}
+
 /* On phones the keyboard docks to the bottom edge of the screen. */
 .app[data-compact] .app__main {
-  gap: 0;
   max-width: none;
   padding: 0;
+}
+
+.app[data-compact] .app__main > * + * {
+  margin-top: 0;
 }

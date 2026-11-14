@@ -1,6 +1,10 @@
 .key__language {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   font-family: var(--ui-font);
+}
+
+/* A margin rather than flexbox gap; see App.css. */
+.key__language .icon {
+  margin-right: 6px;
 }

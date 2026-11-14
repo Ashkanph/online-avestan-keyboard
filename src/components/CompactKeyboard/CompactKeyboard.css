@@ -5,6 +5,8 @@
 }
 
 .keyboard[data-compact] .key {
+  /* The vh value is for browsers without dvh units. */
+  height: clamp(38px, 7.2vh, 58px);
   height: clamp(38px, 7.2dvh, 58px);
   padding: 4px 2px;
 }

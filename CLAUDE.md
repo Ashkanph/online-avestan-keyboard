@@ -37,6 +37,20 @@ Each component lives in its own folder, `src/components/<Name>/`, as `<Name>.tsx
 
 The app is an installable PWA, configured through `VitePWA` in `vite.config.ts`. The service worker precaches the whole build (production only; it is not active under `npm run dev`). `useInstallPrompt` and `InstallButton` provide the "add to home screen" button. The icons in `public/icons` are generated PNGs.
 
+### Browser support
+
+The app supports browsers from 2020 on: Chrome and Edge 80, Firefox 72, Safari 13.1 and iOS 13.4 (`BROWSER_TARGETS` in `vite.config.ts`). The build lowers newer JavaScript and CSS syntax, but not APIs or CSS features that can't be rewritten, so the source avoids or falls back from these:
+
+- **Flexbox `gap`** (Chrome 84, Safari 14.1): space flex items with margins instead.
+- **`dvh` units** (Safari 15.4): put a `vh` declaration before each `dvh` one. `.app` takes its height from `--app-height`, which `lib/viewportHeight.ts` sets from `window.innerHeight` where `dvh` is missing, because on old iOS `100vh` runs under Safari's toolbar.
+- **`:focus-visible`** (Safari 15.4): pair it with a `:focus` rule; see `Key.css`.
+- **`clamp()`, `min()`, `max()`** (Firefox 75): give a plain value first.
+- **Logical properties** such as `margin-inline-start` (Chrome 87): use physical ones, since the page is always left to right.
+- **`<dialog>`** (Safari 15.4): `InstallButton` falls back to toggling the `open` attribute, and doesn't use `<form method="dialog">`, which would reload the page there.
+- **`MediaQueryList.addEventListener`** (Safari 14): fall back to `addListener`, as `useMediaQuery` does.
+- **Regex `\p{…}`, lookbehind, named groups and the `s` flag** (Firefox 78, lookbehind Safari 16.4): a syntax error there stops the whole app from loading.
+- **Newer built-ins** such as `Array.prototype.at`, `structuredClone`, `Object.hasOwn` and `replaceAll`: no polyfills are included.
+
 ### Invariants that are easy to break
 
 - **Avestan is outside the BMP** (U+10B00 block), so each letter is a surrogate pair. Don't index or split strings by code unit: use `Array.from` or code-point-aware logic, as `deleteBeforeCaret` does.

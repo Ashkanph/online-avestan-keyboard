@@ -112,11 +112,16 @@ export function describeChar(char: string): string {
   return CHAR_NAMES.get(char) ?? char
 }
 
+// Combining diacritics and Arabic-script marks. Spelled out instead of /\p{M}/u, which is a syntax
+// error before Firefox 78 and would stop the whole app from loading there.
+const COMBINING_MARK =
+  /^[\u0300-\u036F\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]$/
+
 /** What to draw on a key for a character that has no visible shape of its own. */
 export function keyLabel(char: string): string {
   if (char === ZWNJ) return 'ZWNJ'
   if (char === ZWJ) return 'ZWJ'
-  return /^\p{M}$/u.test(char) ? `◌${char}` : char
+  return COMBINING_MARK.test(char) ? `◌${char}` : char
 }
 
 const ENGLISH_NON_LETTERS: Record<string, KeyChars> = {
