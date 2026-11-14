@@ -3,6 +3,8 @@ import { InstallButton } from './InstallButton'
 import { GitHubIcon, MoonIcon, SunIcon } from './icons'
 
 const REPOSITORY_URL = 'https://github.com/Ashkanph/online-avestan-keyboard'
+/** The logo is the favicon in `public`, so there is a single copy of it. */
+const LOGO_URL = `${import.meta.env.BASE_URL}favicon.svg`
 
 interface HeaderProps {
   theme: Theme
@@ -14,7 +16,10 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
 
   return (
     <header className="header">
-      <h1 className="header__title">Avestan online keyboard</h1>
+      <div className="header__brand">
+        <img className="header__logo" src={LOGO_URL} alt="" width={32} height={32} />
+        <h1 className="header__title">Avestan online keyboard</h1>
+      </div>
       <div className="header__actions">
         <InstallButton />
         <a
