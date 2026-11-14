@@ -24,6 +24,11 @@ npm run dev
 
 ## Fonts
 
-The files in `src/assets/fonts` are licensed under the SIL Open Font License 1.1. The licence texts
-are next to the fonts. `UnifontUpper-Avestan.woff2` is GNU Unifont Upper reduced to the Avestan
-block.
+The fonts in `src/assets/fonts` are licensed under the SIL Open Font License 1.1. The licence texts
+are next to the fonts.
+
+| Font                           | File                            | Licence                   | Notes                                                                                                                       |
+| ------------------------------ | ------------------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Noto Sans Avestan (Google)     | `NotoSansAvestan-Regular.woff2` | `NotoSansAvestan-OFL.txt` | Default font                                                                                                                |
+| Ahuramazda (Ernst Tremel)      | `Ahuramazda.woff2`              | `Ahuramazda-OFL.txt`      | `ahuramazda.ttf` 1.000 from [Font Library](https://fontlibrary.org/en/font/ahuramazda), compressed to WOFF2 without changes |
+| GNU Unifont Upper (Unifoundry) | `UnifontUpper-Avestan.woff2`    | `Unifont-OFL.txt`         | Reduced to the Avestan block                                                                                                |

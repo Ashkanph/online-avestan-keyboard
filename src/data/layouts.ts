@@ -166,7 +166,7 @@ export const LAYOUTS: Record<LanguageId, Layout> = {
     id: 'ae',
     name: 'Avestan',
     dir: 'rtl',
-    placeholder: 'Type in Avestan',
+    placeholder: '𐬀𐬉𐬎𐬎𐬋 ⸱ 𐬞𐬀𐬧𐬙𐬃 ⸱ 𐬫𐬋 ⸱ 𐬀𐬴𐬀𐬵𐬈 ⸱',
     keys: {
       ...ENGLISH_NON_LETTERS,
       Digit1: ['1', RING_POINT],

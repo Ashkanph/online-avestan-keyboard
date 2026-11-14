@@ -7,6 +7,7 @@ export interface AvestanFont {
 
 export const AVESTAN_FONTS: readonly AvestanFont[] = [
   { id: 'noto-sans', label: 'Noto Sans Avestan', family: "'Noto Sans Avestan'" },
+  { id: 'ahuramazda', label: 'Ahuramazda', family: "'Ahuramazda'" },
   { id: 'unifont', label: 'GNU Unifont (pixel)', family: "'Unifont Avestan'" },
 ]
 
