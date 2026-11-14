@@ -1,4 +1,10 @@
+<p align="center">
+  <img src="public/favicon.svg" alt="Avestan online keyboard logo" width="120" height="120" />
+</p>
+
 A web-based Avestan keyboard application.
+
+Use it at https://ashkanph.github.io/online-avestan-keyboard/
 
 - Support multiple languages (Avestan, persian and english)
 - Responsive design, with a phone-style keyboard on small screens
@@ -6,6 +12,7 @@ A web-based Avestan keyboard application.
 - Support physical keyboards
 - Selectable Avestan font, with all fonts served from this project
 - Can be added to a phone's home screen as an app, and works without an internet connection
+- No tracking! Your data is safe.
 
 ### Characters
 

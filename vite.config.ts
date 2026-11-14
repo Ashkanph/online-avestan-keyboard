@@ -1,5 +1,6 @@
+import { readFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // The oldest browsers supported: the first versions of each released in 2020. The build lowers
@@ -7,8 +8,33 @@ import { VitePWA } from 'vite-plugin-pwa'
 // flexbox gap, :focus-visible, dvh units, <dialog>) have fallbacks in the source.
 const BROWSER_TARGETS = ['chrome80', 'edge80', 'firefox72', 'safari13.1', 'ios13.4']
 
+/**
+ * Copies README.md and LICENSE into dist/, so the deployed GitHub Pages branch has them too. In the
+ * README, links to files in public/ lose that prefix, because the build puts those files at the
+ * top of dist/.
+ */
+function copyRepositoryFiles(): Plugin {
+  // Next to this config file, whatever directory the build is started from.
+  const read = (name: string) => readFileSync(new URL(name, import.meta.url), 'utf8')
+
+  return {
+    name: 'copy-repository-files',
+    apply: 'build',
+    generateBundle() {
+      this.emitFile({
+        type: 'asset',
+        fileName: 'README.md',
+        // Matches HTML attributes (src="public/…") and Markdown links (](public/…)).
+        source: read('README.md').replace(/(="|\]\()(\.\/)?public\//g, '$1'),
+      })
+      this.emitFile({ type: 'asset', fileName: 'LICENSE', source: read('LICENSE') })
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
+  base: './',
   build: {
     target: BROWSER_TARGETS,
   },
@@ -43,5 +69,6 @@ export default defineConfig({
         ],
       },
     }),
+    copyRepositoryFiles(),
   ],
 })
