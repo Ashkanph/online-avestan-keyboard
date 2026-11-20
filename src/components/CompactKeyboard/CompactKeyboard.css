@@ -13,7 +13,7 @@
 
 .keyboard[data-compact] .key__face {
   border-radius: 9px;
-  font-size: 21px;
+  font-size: 22px;
 }
 
 .keyboard[data-compact] .key[data-kind='function'] .key__face {
