@@ -23,6 +23,10 @@ export function usePhysicalKeyboard({ layout, textareaRef, onInsert, onBackspace
         event.ctrlKey || event.metaKey || event.altKey || event.getModifierState('AltGraph')
       if (hasCommandModifier || event.isComposing) return
 
+      // An open dialog covers the text, so keys go to the dialog. Without <dialog> support the
+      // dialog isn't modal and focus may still be outside it, so this checks the page.
+      if (document.querySelector('dialog[open]')) return
+
       const target = event.target as HTMLElement
       if (target.closest('select, input')) return
       const activatesFocusedControl = event.code === 'Space' || event.code === 'Enter'

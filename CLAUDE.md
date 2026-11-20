@@ -46,7 +46,7 @@ The app supports browsers from 2020 on: Chrome and Edge 80, Firefox 72, Safari 1
 - **`:focus-visible`** (Safari 15.4): pair it with a `:focus` rule; see `Key.css`.
 - **`clamp()`, `min()`, `max()`** (Firefox 75): give a plain value first.
 - **Logical properties** such as `margin-inline-start` (Chrome 87): use physical ones, since the page is always left to right.
-- **`<dialog>`** (Safari 15.4): `InstallButton` falls back to toggling the `open` attribute, and doesn't use `<form method="dialog">`, which would reload the page there.
+- **`<dialog>`** (Safari 15.4): the shared `Dialog` component falls back to toggling the `open` attribute, and doesn't use `<form method="dialog">`, which would reload the page there.
 - **`MediaQueryList.addEventListener`** (Safari 14): fall back to `addListener`, as `useMediaQuery` does.
 - **Regex `\p{…}`, lookbehind, named groups and the `s` flag** (Firefox 78, lookbehind Safari 16.4): a syntax error there stops the whole app from loading.
 - **Newer built-ins** such as `Array.prototype.at`, `structuredClone`, `Object.hasOwn` and `replaceAll`: no polyfills are included.

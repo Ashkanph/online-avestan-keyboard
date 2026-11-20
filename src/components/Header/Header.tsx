@@ -1,4 +1,5 @@
 import type { Theme } from '../../hooks/useTheme'
+import { AboutButton } from '../AboutButton/AboutButton'
 import { InstallButton } from '../InstallButton/InstallButton'
 import { GitHubIcon, MoonIcon, SunIcon } from '../icons/icons'
 import './Header.css'
@@ -12,16 +13,19 @@ interface HeaderProps {
   onToggleTheme: () => void
 }
 
-export function Header({ theme, onToggleTheme }: HeaderProps) {
+export function Header({ theme, onToggleTheme, compact }: HeaderProps) {
   const nextTheme = theme === 'dark' ? 'light' : 'dark'
 
   return (
     <header className="header">
       <div className="header__brand">
         <img className="header__logo" src={LOGO_URL} alt="" width={32} height={32} />
-        <h1 className="header__title">Avestan online keyboard</h1>
+        <h1 className="header__title">
+          {compact ? 'Avestan keyboard' : 'Avestan online keyboard'}
+        </h1>
       </div>
       <div className="header__actions">
+        <AboutButton />
         <InstallButton />
         <a
           className="icon-button"

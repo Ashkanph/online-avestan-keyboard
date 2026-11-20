@@ -1,0 +1,60 @@
+.dialog {
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  /* The panel scrolls instead, and sets the height limit. */
+  max-height: none;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 40%);
+}
+
+/* Browsers without <dialog> (Safari before 15.4) treat it as an unknown inline element, so it
+   is hidden, centered and given a backdrop here. */
+.dialog[data-fallback] {
+  display: none;
+}
+
+.dialog[data-fallback][open] {
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  display: block;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 100vmax rgb(0 0 0 / 40%);
+}
+
+/* --app-height is only set in browsers without dvh units; see lib/viewportHeight.ts. */
+.dialog__panel {
+  max-height: calc(100vh - 32px);
+  max-height: calc(var(--app-height, 100dvh) - 32px);
+  padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dialog__title {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.dialog__button {
+  display: block;
+  /* The page is always left to right; margin-inline-start is missing before Chrome 87. */
+  margin-left: auto;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  cursor: pointer;
+}

@@ -57,7 +57,7 @@ function App() {
       data-compact={compact || undefined}
       style={{ '--avestan-font': font.family } as CSSProperties}
     >
-      <Header theme={theme} onToggleTheme={toggleTheme} />
+      <Header theme={theme} onToggleTheme={toggleTheme} compact={compact || undefined} />
       <main className="app__main">
         <TextPanel
           layout={layout}

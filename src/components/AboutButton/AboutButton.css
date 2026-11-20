@@ -1,0 +1,49 @@
+.about-dialog {
+  width: 560px;
+}
+
+/* Stays at the top while the text scrolls, so the close button is always in reach. The negative
+   margins cover the panel's padding so text doesn't show above or beside it. */
+.about-dialog__header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -20px -10px 4px -20px;
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.about-dialog__header .dialog__title {
+  margin: 0;
+}
+
+.about-dialog__text + .about-dialog__text {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.about-dialog__heading {
+  margin: 16px 0 6px;
+  font-size: 15px;
+}
+
+.about-dialog__paragraph {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-dialog__text[dir='rtl'] .about-dialog__paragraph {
+  line-height: 1.9;
+}
+
+.about-button svg {
+  height: 1.3em;
+  width: 1.3em;
+}
