@@ -11,6 +11,8 @@ const LOGO_URL = `${import.meta.env.BASE_URL}favicon.svg`
 interface HeaderProps {
   theme: Theme
   onToggleTheme: () => void
+  /** Shortens the title to fit phone screens. */
+  compact?: boolean
 }
 
 export function Header({ theme, onToggleTheme, compact }: HeaderProps) {

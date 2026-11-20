@@ -47,3 +47,12 @@
   height: 1.3em;
   width: 1.3em;
 }
+
+.about-dialog__page-link {
+  display: block;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 14px;
+}

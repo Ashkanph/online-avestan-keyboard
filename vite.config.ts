@@ -1,7 +1,9 @@
 import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import { ABOUT_TEXTS } from './src/data/about.ts'
 
 // The oldest browsers supported: the first versions of each released in 2020. The build lowers
 // newer JavaScript and CSS syntax to what these understand. Features that can't be lowered (APIs,
@@ -32,11 +34,59 @@ function copyRepositoryFiles(): Plugin {
   }
 }
 
+function escapeHtml(text: string): string {
+  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
+/**
+ * Writes the About dialog's text into about/index.html as plain HTML, in place of its
+ * `<!-- about-text: … -->` comment. The page has no app script, so search engines and link
+ * previews read the text without running JavaScript, and the text has a single source.
+ */
+function aboutPage(): Plugin {
+  const placeholder = /<!-- about-text:[^>]*-->/
+
+  return {
+    name: 'about-page',
+    // After Vite's own build plugins, so the HTML pages are in the bundle by generateBundle.
+    enforce: 'post',
+    transformIndexHtml(html) {
+      if (!placeholder.test(html)) return html
+      const articles = ABOUT_TEXTS.map((text) => {
+        const sections = text.sections.map((section) => {
+          const paragraphs = section.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')
+          return `<section><h2>${escapeHtml(section.heading)}</h2>${paragraphs}</section>`
+        })
+        return `<article lang="${text.lang}" dir="${text.dir}">${sections.join('')}</article>`
+      })
+      return html.replace(placeholder, articles.join('\n'))
+    },
+    // VitePWA adds the web app manifest and the service worker registration to every page, with
+    // paths relative to the top folder. From about/ they would point to missing files, and the
+    // page isn't the app, so they are removed. Visiting the keyboard still installs the worker,
+    // which then serves this page offline too.
+    generateBundle(_, bundle) {
+      const page = bundle['about/index.html']
+      if (page?.type !== 'asset' || typeof page.source !== 'string') return
+      page.source = page.source
+        .replace(/<link rel="manifest"[^>]*>/, '')
+        .replace(/<script id="vite-plugin-pwa:register-sw"[^>]*><\/script>/, '')
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
   build: {
     target: BROWSER_TARGETS,
+    rolldownOptions: {
+      // The keyboard, and a static page about the Avestan language for search engines.
+      input: {
+        main: fileURLToPath(new URL('index.html', import.meta.url)),
+        about: fileURLToPath(new URL('about/index.html', import.meta.url)),
+      },
+    },
   },
   plugins: [
     react(),
@@ -73,6 +123,7 @@ export default defineConfig({
         ],
       },
     }),
+    aboutPage(),
     copyRepositoryFiles(),
   ],
 })

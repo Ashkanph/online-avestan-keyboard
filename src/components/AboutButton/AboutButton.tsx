@@ -5,6 +5,8 @@ import { CloseIcon, HelpIcon } from '../icons/icons'
 import './AboutButton.css'
 
 const LABEL = 'About the Avestan language'
+/** The same text as a static page, built from about/index.html. */
+const ABOUT_PAGE_URL = `${import.meta.env.BASE_URL}about/`
 
 export function AboutButton() {
   const [open, setOpen] = useState(false)
@@ -44,6 +46,10 @@ export function AboutButton() {
             ))}
           </article>
         ))}
+        {/* A new tab, because leaving this page would lose the typed text. */}
+        <a className="about-dialog__page-link" href={ABOUT_PAGE_URL} target="_blank" rel="noopener">
+          Open as a page · نمایش در صفحهٔ جدا
+        </a>
       </Dialog>
     </>
   )

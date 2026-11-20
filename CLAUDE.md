@@ -37,6 +37,8 @@ Each component lives in its own folder, `src/components/<Name>/`, as `<Name>.tsx
 
 The app is an installable PWA, configured through `VitePWA` in `vite.config.ts`. The service worker precaches the whole build (production only; it is not active under `npm run dev`). `useInstallPrompt` and `InstallButton` provide the "add to home screen" button. The icons in `public/icons` are generated PNGs.
 
+The site has a second page, `about/index.html`: a static page about the Avestan language, built mainly for search engines. It has no app script. The `aboutPage` plugin in `vite.config.ts` fills it at build time from `src/data/about.ts`, the same text the About dialog shows, and removes the manifest and service worker tags that VitePWA adds, whose paths would be wrong from `about/`. New pages must be added to `build.rolldownOptions.input` and to `public/sitemap.xml`.
+
 ### Browser support
 
 The app supports browsers from 2020 on: Chrome and Edge 80, Firefox 72, Safari 13.1 and iOS 13.4 (`BROWSER_TARGETS` in `vite.config.ts`). The build lowers newer JavaScript and CSS syntax, but not APIs or CSS features that can't be rewritten, so the source avoids or falls back from these:

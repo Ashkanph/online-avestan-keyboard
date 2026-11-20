@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- English followed by Persian, as in the keyboard page's index.html. -->
+    <title>What is the Avestan language? – زبان اوستایی چیست؟</title>
+    <meta
+      name="description"
+      content="Avestan, the ancient Iranian language of the Zoroastrian scriptures: its history, use and script. زبان اوستایی، زبان کهن ایرانی اوستا: تاریخچه، کاربرد و دبیره."
+    />
+    <!-- The absolute URLs below must match where the site is published. -->
+    <link rel="canonical" href="https://ashkanph.github.io/online-avestan-keyboard/about/" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Avestan online keyboard" />
+    <meta property="og:title" content="What is the Avestan language? – زبان اوستایی چیست؟" />
+    <meta
+      property="og:description"
+      content="The ancient Iranian language of the Zoroastrian scriptures, its use and its script. زبان کهن ایرانی اوستا، کاربرد و دبیرهٔ آن."
+    />
+    <meta property="og:url" content="https://ashkanph.github.io/online-avestan-keyboard/about/" />
+    <meta
+      property="og:image"
+      content="https://ashkanph.github.io/online-avestan-keyboard/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The Avestan online keyboard, with Avestan text typed above the on-screen keyboard"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="fa_IR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured data for search engines. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "What is the Avestan language?",
+        "alternateName": "زبان اوستایی چیست؟",
+        "url": "https://ashkanph.github.io/online-avestan-keyboard/about/",
+        "description": "Avestan, the ancient Iranian language of the Zoroastrian scriptures: its history, use and script.",
+        "inLanguage": ["en", "fa"],
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Avestan online keyboard",
+          "url": "https://ashkanph.github.io/online-avestan-keyboard/"
+        },
+        "about": [
+          {
+            "@type": "Language",
+            "name": "Avestan",
+            "alternateName": "اوستایی",
+            "sameAs": "https://en.wikipedia.org/wiki/Avestan"
+          },
+          {
+            "@type": "Thing",
+            "name": "Avestan alphabet",
+            "alternateName": "دبیرهٔ اوستایی",
+            "sameAs": "https://en.wikipedia.org/wiki/Avestan_alphabet"
+          }
+        ]
+      }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png" />
+    <link rel="stylesheet" href="/src/about-page.css" />
+    <meta name="theme-color" content="#f6f8fc" />
+    <script>
+      // The same as in index.html: applies the saved theme before first paint.
+      ;(function () {
+        var saved = null
+        try {
+          saved = localStorage.getItem('theme')
+        } catch (error) {}
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        var theme = saved || (dark ? 'dark' : 'light')
+        document.documentElement.dataset.theme = theme
+        document
+          .querySelector('meta[name="theme-color"]')
+          .setAttribute('content', theme === 'dark' ? '#131416' : '#f6f8fc')
+      })()
+    </script>
+  </head>
+  <body>
+    <!-- A plain HTML page with no app script, so that search engines and link previews read all of
+         it. The keyboard's About dialog shows the same text. -->
+    <header class="about-page__header">
+      <a class="about-page__brand" href="../">
+        <img class="about-page__logo" src="/favicon.svg" alt="" width="32" height="32" />
+        Avestan online keyboard
+      </a>
+    </header>
+    <main class="about-page">
+      <h1 class="about-page__title">
+        The Avestan language · <span lang="fa" dir="rtl">زبان اوستایی</span>
+      </h1>
+      <!-- about-text: filled from src/data/about.ts by the aboutPage plugin in vite.config.ts. -->
+      <p class="about-page__cta">
+        <a class="about-page__button" href="../">Type in Avestan with the online keyboard</a>
+      </p>
+      <p class="about-page__cta" lang="fa" dir="rtl">
+        <a class="about-page__button" href="../"
+          >نوشتن به دبیرهٔ اوستایی (دین‌دبیره) با صفحه‌کلید آنلاین</a
+        >
+      </p>
+    </main>
+  </body>
+</html>
